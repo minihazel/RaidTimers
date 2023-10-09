@@ -62,7 +62,7 @@ namespace RaidTimers
                         string mName = map.Key.ToString();
                         JObject child = (JObject)map.Value;
 
-                        escapeBox.Text = child["time"].ToString();
+                        escapeBox.Text = child["EscapeTimeLimit"].ToString();
                     }
                 }
             }
@@ -146,16 +146,16 @@ namespace RaidTimers
 
                             try
                             {
-                                maps["bigmap"]["time"] = 40;
-                                maps["factory4_day"]["time"] = 20;
-                                maps["factory4_night"]["time"] = 25;
-                                maps["interchange"]["time"] = 40;
-                                maps["laboratory"]["time"] = 35;
-                                maps["lighthouse"]["time"] = 40;
-                                maps["rezervbase"]["time"] = 40;
-                                maps["shoreline"]["time"] = 45;
-                                maps["tarkovstreets"]["time"] = 50;
-                                maps["woods"]["time"] = 40;
+                                maps["bigmap"]["EscapeTimeLimit"] = 40;
+                                maps["factory4_day"]["EscapeTimeLimit"] = 20;
+                                maps["factory4_night"]["EscapeTimeLimit"] = 25;
+                                maps["interchange"]["EscapeTimeLimit"] = 40;
+                                maps["laboratory"]["EscapeTimeLimit"] = 35;
+                                maps["lighthouse"]["EscapeTimeLimit"] = 40;
+                                maps["rezervbase"]["EscapeTimeLimit"] = 40;
+                                maps["shoreline"]["EscapeTimeLimit"] = 45;
+                                maps["tarkovstreets"]["EscapeTimeLimit"] = 50;
+                                maps["woods"]["EscapeTimeLimit"] = 40;
 
                                 string output = JsonConvert.SerializeObject(obj, Formatting.Indented);
 
@@ -182,7 +182,7 @@ namespace RaidTimers
                                     foreach (var map in maps)
                                     {
                                         JObject child = (JObject)map.Value;
-                                        child["time"] = Int32.Parse(escapeBox.Text);
+                                        child["EscapeTimeLimit"] = Int32.Parse(escapeBox.Text);
                                     }
 
                                     string output = JsonConvert.SerializeObject(obj, Formatting.Indented);
@@ -226,43 +226,43 @@ namespace RaidTimers
                                 switch (mapsBox.SelectedItem.ToString().ToLower())
                                 {
                                     case "customs":
-                                        maps[lblMapPlaceholder.Text]["time"] = 40;
+                                        maps[lblMapPlaceholder.Text]["EscapeTimeLimit"] = 40;
                                         break;
 
                                     case "factory day":
-                                        maps[lblMapPlaceholder.Text]["time"] = 20;
+                                        maps[lblMapPlaceholder.Text]["EscapeTimeLimit"] = 20;
                                         break;
 
                                     case "factory night":
-                                        maps[lblMapPlaceholder.Text]["time"] = 25;
+                                        maps[lblMapPlaceholder.Text]["EscapeTimeLimit"] = 25;
                                         break;
 
                                     case "interchange":
-                                        maps[lblMapPlaceholder.Text]["time"] = 40;
+                                        maps[lblMapPlaceholder.Text]["EscapeTimeLimit"] = 40;
                                         break;
 
                                     case "labs":
-                                        maps[lblMapPlaceholder.Text]["time"] = 35;
+                                        maps[lblMapPlaceholder.Text]["EscapeTimeLimit"] = 35;
                                         break;
 
                                     case "lighthouse":
-                                        maps[lblMapPlaceholder.Text]["time"] = 40;
+                                        maps[lblMapPlaceholder.Text]["EscapeTimeLimit"] = 40;
                                         break;
 
                                     case "reserve":
-                                        maps[lblMapPlaceholder.Text]["time"] = 40;
+                                        maps[lblMapPlaceholder.Text]["EscapeTimeLimit"] = 40;
                                         break;
 
                                     case "shoreline":
-                                        maps[lblMapPlaceholder.Text]["time"] = 45;
+                                        maps[lblMapPlaceholder.Text]["EscapeTimeLimit"] = 45;
                                         break;
 
                                     case "streets":
-                                        maps[lblMapPlaceholder.Text]["time"] = 50;
+                                        maps[lblMapPlaceholder.Text]["EscapeTimeLimit"] = 50;
                                         break;
 
                                     case "woods":
-                                        maps[lblMapPlaceholder.Text]["time"] = 40;
+                                        maps[lblMapPlaceholder.Text]["EscapeTimeLimit"] = 40;
                                         break;
                                 }
 
@@ -287,9 +287,9 @@ namespace RaidTimers
                                         {
                                             string mName = map.Key.ToString();
                                             JObject child = (JObject)map.Value;
-                                            int time = (int)child["time"];
+                                            int time = (int)child["EscapeTimeLimit"];
 
-                                            maps[lblMapPlaceholder.Text]["time"] = Int32.Parse(escapeBox.Text);
+                                            maps[lblMapPlaceholder.Text]["EscapeTimeLimit"] = Int32.Parse(escapeBox.Text);
 
                                             string output = JsonConvert.SerializeObject(obj, Formatting.Indented);
                                             File.WriteAllText(modConfig, output);
@@ -338,7 +338,7 @@ namespace RaidTimers
                     {
                         string mName = map.Key.ToString();
                         JObject child = (JObject)map.Value;
-                        int time = (int)child["time"];
+                        int time = (int)child["EscapeTimeLimit"];
 
                         string content = $"Map {mName} has time: {time.ToString()} minutes\n";
                         Array.Resize(ref mapArray, mapArray.Length + 1);
@@ -378,7 +378,7 @@ namespace RaidTimers
                             {
                                 string mName = map.Key.ToString();
                                 JObject child = (JObject)map.Value;
-                                int time = (int)child["time"];
+                                int time = (int)child["EscapeTimeLimit"];
 
                                 string content = $"Map {mName} has time: {time.ToString()} minutes";
                                 showMessage(content);
